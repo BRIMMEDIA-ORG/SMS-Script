@@ -1,6 +1,13 @@
 import requests
 import csv
+import os
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Read API key from environment variable
+api_key = os.getenv("API_KEY")
 
 # Read data from CSV file
 
@@ -22,6 +29,7 @@ def read_data(file_path):
             data.append(extracted_data)
     return data
 
+
 # Make POST request
 
 
@@ -35,10 +43,10 @@ def make_post_request(name, phone_number, attendance_date):
         'is_schedule': False,
         'schedule_date': ''
     }
-    # response = requests.get(
-    #     'https://api.mnotify.com/api/balance/sms?key=EoM1D59N9Yci01HRQgREGYLov', headers=headers)
-    response = requests.post(
-        'https://api.mnotify.com/api/sms/quick?key=EoM1D59N9Yci01HRQgREGYLov', data)
+    response = requests.get(
+        f'https://api.mnotify.com/api/balance/sms?key={api_key}')
+    # response = requests.post(
+    #     'https://api.mnotify.com/api/sms/quick?key={api_key}', data)
     return response
 
 # Main script
