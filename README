@@ -1,0 +1,11 @@
+When you clone this repository
+
+- do pip install requests, to install dependency
+
+Create a csv file in the format below
+
+- full_name,email,phone_number,gender,attendee_type,branch,attendance_date,attended
+
+Open the sms_script file and edit line 55
+
+- should reference name/path of csv file
